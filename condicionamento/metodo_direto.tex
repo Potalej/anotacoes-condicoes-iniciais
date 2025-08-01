@@ -1,0 +1,140 @@
+\subsection{Método direto}
+Há, no entanto, uma forma de unir todas as transformações adequadamente. De fato, basta tomar
+\begin{align}
+    \tilde{\vet q_a} &= \alpha^{-1} \vet q_a, \\
+    \tilde{\vet p_a} &= \beta\left(\vet p_a - \dfrac{m_a}{M} \left(\vet P - \beta^{-1} \tilde{\vet P}\right) - m_a \vet q_a \times \vet \omega\right), \\
+    \bm I_T \vet \omega &= \vet J - \alpha \beta^{-1} \tilde{\vet J}.
+\end{align}
+
+Como $\alpha$ impacta fortemente no valor de $\beta$, vamos obter $\beta$ primeiro. Veja que temos o seguinte para a energia total:
+\begin{equation}\label{eq:t_til_e_til_v0}
+    T(\tilde{\vet p}) = \tilde E - \alpha V_0.
+\end{equation}
+Vamos expandir $T(\tilde{\vet p})$:
+\begin{align*}
+    T(\tilde{\vet p}) 
+    &= \sum_{a=1}^{N} \dfrac{\beta^2}{2m_a} \norma{\vet p_a - \dfrac{m_a}{M}\left(\vet P - \beta^{-1} \tilde{\vet P}\right) - m_a \vet q_a \times \bm I_{T}^{-1} (\vet J - \alpha \beta^{-1} \tilde{\vet J})}^2.
+\end{align*}
+Podemos separar $\tilde T$ da seguinte forma:
+\begin{equation}\label{eq:separacao_t_til}
+    \tilde T = \beta^2 S_1 + S_2,
+\end{equation}
+onde:
+\begin{align*}
+    S_1 &= \sum_{a=1}^N \dfrac{1}{2m_a} \norma{\vet K_1^a}^2
+    = \sum_{a=1}^N \dfrac{1}{2m_a} \norma{\vet p_a - \dfrac{m_a}{M} \vet P - m_a \vet q_a \times (\bm I_T^{-1} \vet J)}^2, \\
+    S_2 &= \sum_{a=1}^N \dfrac{1}{2m_a} \norma{\vet K_2^a}^2 = \sum_{a=1}^N \dfrac{1}{2 m_a} \norma{\dfrac{m_a}{M} \tilde{\vet P} + \alpha m_a \vet q_a \times (\bm I_T^{-1} \tilde{\vet J})}^2,
+\end{align*}
+e não é difícil ver que $\sum_{a=1}^N m_a^{-1} \prodint{\vet K_1^a}{\vet K_2^a} = 0$.
+
+De fato, podemos melhorar bastante as expressões de $S_1$ e $S_2$. Com algumas contas chegamos no seguinte para $S_1$:
+\begin{equation}
+    S_1 = T_0 - \dfrac{\norma{\vet P_0}^2}{2 M} + \dfrac{1}{2} \sum_{a=1}^N m_a \norma{\vet q_a \times \vet \omega_0}^2 + \prodint{\vet J_0}{\bm I_T^{-1} \vet J_0}.
+\end{equation}
+A expressão que ainda possui um somatório pode ser melhorada:
+$$
+\norma{\vet q_a \times \vet \omega}^2 = \norma{\vet q_a}^2 \norma{\vet \omega}^2 - \prodint{\vet q_a}{\vet \omega}^2
+=
+\vet \omega^T (\norma{\vet q_a}^2 Id_3 - \vet q_a \vet q_a^T) \vet \omega.
+$$
+
+Observe também que o tensor de inércia $\bm I_a$ do corpo $a$ pode ser escrito como:
+$$
+\bm I_a = m_a (\vet q_a \vet q_a^T - \norma{\vet q_a}^2 Id_3),
+$$
+então temos para a soma:
+$$
+\sum_{a=1}^N m_a \norma{\vet q_a \times \vet \omega_0}^2
+= - \vet \omega_0^T \sum_{a=1}^N \bm I_a \vet \omega_0
+= - \vet \omega_0^T \bm I_T \vet \omega_0.
+$$
+Como $\vet \omega_0 = \bm I_T^{-1} \vet J_0$, temos
+$$
+= - \vet J_0^T (\bm I_T^{-1})^T \bm I_T \bm I_T^{-1} \vet J_0
+= - \vet J_0^T (\bm I_T^{-1})^T \vet J_0.
+$$
+Assim, $S_1$ pode ser escrito como:
+\begin{equation}\label{eq:S_1}
+    S_1 = T_0 - \dfrac{\norma{\vet P_0}^2}{2 M} + \dfrac{1}{2} \prodint{\vet J_0}{\bm I_T^{-1} \vet J_0}.
+\end{equation}
+
+Através da mesma propriedade é fácil ver também que:
+\begin{equation}\label{eq:S_2}
+    S_2 = \dfrac{||\tilde{\vet P}||^2}{2M} - \dfrac{\alpha^2}{2} \prodint{\tilde{\vet J}}{\bm I_T^{-1} \tilde{\vet J}} = \dfrac{||\tilde{\vet P}||^2}{2M} + \dfrac{\alpha^2}{2} \tilde{\sigma}.
+\end{equation}
+
+Voltando às constantes, $\beta$ fica determinado uma vez que escolhemos $\alpha$. Porém, $\alpha$ não pode ser qualquer um. Juntando as equações (\ref{eq:t_til_e_til_v0}) e (\ref{eq:separacao_t_til}) temos:
+\begin{equation}\label{eq:beta1}
+    \beta^2 = \dfrac{\tilde E - \alpha V_0 - S_2}{S_1}.
+\end{equation}
+Como $S_1, S_2, - V_0 > 0$, precisamos escolher $\alpha$ de acordo com $\tilde E$ de modo a garantir que exista tal $\beta \in \R$. Para isso, basta que $\tilde E - \alpha V_0 - S_2 > 0$. Expandindo:
+\begin{equation}\label{eq:inequacao_delta1}
+    -\tilde E + \alpha V_0 + \dfrac{||\tilde{\vet P}||^2}{2M} + \dfrac{\alpha^2}{2} \tilde \sigma < 0,
+\end{equation}
+o que novamente é uma inequação de segundo grau para $\alpha$ com coeficiente quadrático positivo, então a solução, se houver, será o intervalo aberto entre as duas raízes da equação. Como na desigualdade de Sundman, aqui o discriminante nos impõe uma condição:
+\begin{equation}
+    \Delta_1 = V_0^2 - \tilde \sigma (M^{-1} ||\tilde{\vet P}||^2 - 2 \tilde E) \geq 0
+\end{equation}
+\begin{equation}\label{eq:restricao_delta1}
+    \Rightarrow
+    V_0^2 \geq \tilde{\sigma} (M^{-1} ||\tilde{\vet P}||^2 - 2 \tilde E).
+\end{equation}
+
+Aqui, $\tilde \sigma M^{-1} ||\tilde{\vet P}||^2 \geq 0$, mas a existência de $\alpha$ e $\beta$ depende de $V_0^2$ vencer a energia total desejada. Vale também ressaltar que o tensor de inércia total é também homogêneo de grau 2, então não adianta tentar reescalar as posições iniciais sorteadas por algum fator, como no outro caso. \textcolor{red}{É realmente necessário aplicar alguma mudança mais profunda, mas não sei ainda se ela sequer existe. Um caminho possível a partir daqui é analisar algo como a esperança sobre $V_0$ e $I_0$ a partir da distribuição e tal, e ai ter algo estatístico para falar: "olha, muito provavelmente não vai dar certo, escolha valores diferentes".}
+
+De fato, a restrição do $\Delta_1$ é uma malha mais fina que a restrição de Sundman. Pela equação (\ref{eq:desigualdade_inercia_angular}) sabemos que $\tilde \sigma \geq \tilde c^2 I_0^{-1}$. Retomando a condição do $\Delta_1$ em (\ref{eq:restricao_delta1}), podemos aplicar esta desigualdade:
+\begin{equation}\label{eq:desigualdade_generalizada}
+    V_0^2 \geq \tilde \sigma (M^{-1} ||\tilde{\vet P}||^2 - 2 \tilde E)
+    \geq \tilde c^2 I_0^{-1} M^{-1} ||\tilde{\vet P}||^2 - 2 \tilde E \tilde c^2 I_0^{-1}.
+\end{equation}
+Observe que o obtido aqui à direita é exatamente a condição de Sundman (\ref{eq:inequacao_sundman}) com um acréscimo do momento linear total desejado. A restrição $\Delta_1$, então é uma restrição mais forte que a de Sundman e deve ser levada em conta no condicionamento de valores iniciais.
+ 
+\subsubsection{Momentos angular e linear totais nulos}\label{subsubsection:j_p_nulos}
+Nesse caso, a coisa toda só depende do sinal de $\tilde E$, pois a expressão para $\beta$ fica:
+\begin{equation}
+    \beta^2 = \dfrac{\tilde E - \alpha V_0}{S_1}
+    \Rightarrow
+    \tilde E > \alpha V_0 \Rightarrow \alpha > \tilde E / V_0.
+\end{equation}
+
+Aqui, como em todo caso, existe um sem número de possibilidades de escolhas de $\alpha$ que dependem unicamente do propósito com a simulação. Podemos escolher, por exemplo,
+\begin{equation}
+    \alpha = 1 + \delta(\tilde E < 0) \tilde E / V_0.
+\end{equation}
+Uso isso no programa porque fica fácil de generalizar para o caso com momento linear. Uma outra escolha mais complicada seria por exemplo, tomando $s_{\tilde E} = sign(\tilde E)$, para $\tilde E \neq 0$ tomar
+\begin{equation}
+    \alpha = \dfrac{\tilde E}{V_0} (1 - k s_{\tilde E}),
+    \quad
+    \beta^2 = \dfrac{\tilde E - \tilde E (1 - k s_{\tilde E})}{S_1} = \dfrac{k s_{\tilde E} \tilde E}{S_1},
+\end{equation}
+e se $\tilde E = 0$ não mexer nas soluções:
+\begin{equation}
+    \alpha = 1, \quad \beta^2 = \dfrac{- V_0}{S_1}.
+\end{equation}
+
+Mais para frente vou fazer uma análise do impacto das escolhas nos resultados.
+
+
+\subsubsection{Garantindo as outras integrais primeiras}
+Para garantir as outras integrais primeiras, precisamos garantir que a restrição generalizada (\ref{eq:desigualdade_generalizada}) seja satisfeita.
+
+Se o momento linear total desejado é nulo, é fácil ver que se $\tilde E \geq 0$ ou se $||\tilde{\vet J}|| = 0$, a condição é satisfeita de imediato, então não é necessário se preocupar. Em outros casos, basta verificar se a restrição generalizada está atendida.
+
+Se o momento angular total desejado não for nulo e a restrição for atendida, podemos tomar como $\alpha$ o ponto que é mínimo para a parábola da inequação generalizada:
+\begin{equation}
+    \alpha^* = - \dfrac{V_0}{\tilde \sigma}.
+\end{equation}
+É verdade que qualquer $\alpha^*$ tomado entre as raízes da equação de restrição funcionará, então cabe estudar como cada uma impacta no problema. De repente no equilíbrio ou coisa assim, vamos ver.
+
+Se por outro lado quisermos $||\tilde{\vet J}|| = 0$ mas $||\tilde{\vet P}|| \neq 0$, então podemos usar (\ref{eq:inequacao_delta1}) para obter valor de $\alpha^*$:
+\begin{equation}
+    \alpha > -\dfrac{||\tilde{\vet P}||^2}{2M V_0} - \tilde E / V_0.
+\end{equation}
+No caso, como o problema aqui pode aparecer devido ao segundo termo poder ser negativo de $\tilde E < 0$, então podemos novamente buscar $\alpha$ tal que $\tilde E - \alpha V_0 - S_2 > 0$, o que fornece:
+\begin{equation}
+    \alpha > -\dfrac{\tilde E}{V_0} - \dfrac{||\tilde{\vet P}||^2}{2 M V_0}.
+\end{equation}
+Seguindo a mesma ideia da primeira sugestão para quando os momentos totais são nulos, podemos tomar:
+\begin{equation}
+    \alpha^* = 1 + \delta(\tilde E < 0) \dfrac{\tilde E}{V_0} - \dfrac{||\tilde{\vet P}||^2}{2 M V_0}.
+\end{equation}

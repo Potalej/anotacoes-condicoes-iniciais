@@ -1,0 +1,51 @@
+\subsection{Equilíbrio}
+Se no caso homogêneo tínhamos a Identidade de Lagrange-Jacobi fornecendo $\langle T \rangle = - \langle V \rangle /2$ para um sistema em equilíbrio, aqui perdemos essa propriedade, e temos no lugar:
+\begin{equation}\label{eq:equilibrio_virial_amortecido}
+    2 T + \sum_{a=1}^N \prodint{\vet F_a^{(\varepsilon)}}{\vet q_a} = 0,
+\end{equation}
+onde as forças são amortecidas.
+
+Nesse caso, o método proposto por Aarseth já não funciona, pois depende da homogeneidade para garantir o potencial desejado. Precisamos então de algo um pouco diferente.
+
+Parecido com o caso de Aarseth, vamos começar condicionando o sistema para ter a tripla $(0, \vet 0, \vet 0)$ utilizando algum método desejado. Observe aqui que queremos $\tilde E_\varepsilon = 0$, e não necessariamente $\tilde E = 0$. Para os momentos, faremos um condicionamento idêntico:
+\begin{equation}
+    \tilde{\vet p_a} = \dfrac{Q_V}{\sqrt \beta} \vet p_a.
+\end{equation}
+
+Aqui existe um problema em definir uma função $f$ em função de algum fator de reescalonamento $\alpha$ imediatamente a partir da expressão (\ref{eq:equilibrio_virial_amortecido}). Após o pré-condicionamento da energia cinética, observe que a equação (\ref{eq:equilibrio_virial_amortecido}) não impõe nenhuma restrição diretamente sobre a energia total nem sobre o potencial, o que ao final nos retorna um sistema em equilíbrio inicial e com $T=1/4$, mas com $E \neq -1/4$. Se fizermos questão de exigir isso (o que faz sentido se pensar em padronização), então basta usar que
+$$
+T(\tilde{\vet p}) = \tilde E - V(\tilde{\vet q}),
+$$
+e aí sim, sendo $c = 2\tilde E$, podemos definir $f$:
+\begin{equation}
+    f(\alpha) = c - V(\alpha^{-1} \vet q_0) + \sum_{a=1}^{N} \prodint{\vet F_a^{(\varepsilon)}(\alpha^{-1} \vet q_a)}{\alpha^{-1} \vet q_a}
+    = c - 2 \alpha V_{\varepsilon \alpha} (\vet q_0) + \alpha^{2} \sum_{a=1}^N \prodint{\vet F_a^{(\alpha \varepsilon)}(\vet q)}{\vet q_a}.
+\end{equation}
+
+[ESSA FUNÇÃO TEM RAÍZ? DEVE TER... NO CASO HOMOGÊNEO, PELO MENOS, TEM...]
+
+Aqui, novamente não conseguimos uma forma explícita para o problema, então precisaremos utilizar algum método iterativo. Para facilitar a notação, seja $\mu = \alpha^{-1}$ Podemos usar Newton novamente, e nesse caso precisamos de $f'(\alpha) = f'(\mu^{-1})$:
+\begin{equation}
+    f'(\mu^{-1}) = 
+    2 \mu^{-2} V_{\varepsilon/\mu} (\vet q)
+    - 2 \mu^{-1} \der{V_{\varepsilon/\mu}}{\mu}
+    - \dfrac{1}{\mu^2} \sum_{a=1}^N \prodint{\vet F_a^{(\varepsilon/\mu)}(\vet q)}{\vet q_a} + \dfrac{1}{\mu} \sum_{a=1}^N \prodint{\der{\vet F_a^{(\varepsilon/\mu)}(\vet q)}{\mu}}{\vet q_a}.
+\end{equation}
+
+Calculando a derivada das forças:
+\begin{equation}
+    \der{\vet F_a^{(\varepsilon/\mu)}(\vet q)}{\mu}
+    = \dfrac{3 \varepsilon^2}{\mu^3} \sum_{b \neq a} G m_a m_b \dfrac{\vet q_b - \vet q_a}{(r_{ab}^2 + (\varepsilon/\mu)^2)^{5/2}}.
+\end{equation}
+
+A derivada do potencial é parecida:
+\begin{equation}
+    \der{V_{\varepsilon/\mu}}{\mu} = - \dfrac{\varepsilon^2 G}{\mu^3} \sum_{a < b} \dfrac{m_a m_b}{(r_{ab}^2 + (\varepsilon/\mu)^2)^{3/2}}
+\end{equation}
+
+Como um chute inicial, podemos tomar $\mu_0 = - 2 V_{\varepsilon, 0}$, que é o valor que usamos no caso do potencial clássico, e com algumas iterações já se obtém um valor aceitável [DAR EXEMPLOS].
+
+Ao final, temos um potencial que junto da energia total desejada $\tilde E$ conseguirá garantir equilíbrio. O problema agora é que a energia cinética não é mais $\tilde E - V(\tilde{\vet q})$, então é preciso re-condicionar as velocidades:
+\begin{equation}
+    \tilde{\vet p} = \vet p \sqrt{\dfrac{V(\tilde{\vet q})}{\tilde E} - 1}.
+\end{equation}

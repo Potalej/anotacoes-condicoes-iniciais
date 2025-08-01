@@ -1,0 +1,63 @@
+\subsection{Propriedades}
+
+O PNCG tem algumas propriedades importantes que valem ser ressaltadas.
+
+\subsubsection{Desigualdade de Sundman}
+
+\begin{theorem}[Desigualdade de Sundman]
+    Sejam $\vet J$ o momento angular, $I$ o momento de inércia e $E$ a energia total de um PNCG. Então $\norma{\vet J}^2 \leq I(\ddot I - 2E)$.
+\end{theorem}
+\begin{proof}
+    Tem no TCC. É só Cauchy-Schwarz.
+\end{proof}
+
+Seu impacto se dá da seguinte forma. Considere a transformação $\tilde{\vet q} = \alpha^{-1} \vet q$ visando obter $\tilde{\vet J}$ e $\tilde E$. No caso do PNCG clássico, a Identidade de Lagrange-Jacobi nos garante que $\ddot I = 4E - 2V$, então a desigualdade de Sundman assume o formato
+\begin{equation}
+    \tilde c^2 \leq 2 \tilde{I} (\tilde{E} - \tilde V),
+    \quad
+    \tilde c = \norma{\tilde{\vet J}}.
+\end{equation}
+Observe que $I$ é uma função homogênea de grau 2, e como $V$ é homogêneo de grau -1, temos:
+\begin{equation}
+    \tilde c^2 \leq 2 \alpha^{-2} I_0 (\tilde E - |\alpha| V_0) = 2 \alpha^{-2} I_0 \tilde E - 2 \dfrac{|\alpha|}{\alpha^2} I_0 V_0.
+\end{equation}
+Podemos multiplicar ambos os lados por $\alpha^2 > 0$:
+\begin{equation}\label{eq:inequacao_sundman}
+    \tilde c^2 \alpha^2 - 2 I_0 \tilde E + 2 |\alpha| I_0 V_0 \leq 0.
+\end{equation}
+
+Independente do sinal de $\alpha$, o que temos é uma inequação de segundo grau para $\alpha$ com coeficiente de segundo grau positivo, o que significa que só existe solução se a equação tiver alguma solução. O discriminante é:
+\begin{equation}\label{eq:delta_sundman}
+    \Delta_{Sundman} = 4 I_0^2 V_0^2 + 8 \tilde c^2 I_0 \tilde E,
+\end{equation}
+e uma solução existe se, e somente se,
+\begin{equation}
+    I_0 V_0^2 \geq -2 \tilde c^2 \tilde E.
+\end{equation}
+A restrição imposta por $\Delta_{Sundman}$ de fato não importa se $\tilde E \geq 0$. Mas caso contrário, identifica se a energia total é suficiente para atender a quantidade de rotação exigida através de $\tilde c^2$.
+
+% Preciso escolher um nome melhor para isso
+\subsubsection{Desigualdade da inércia}
+Seja $\bm W_T = - \bm I_T$, para facilitar a notação. Sabemos que matriz $\bm W_T$ é real e simétrica, e na suposição de que os corpos não sejam colineares (!!!) a matriz é também positiva definida (portanto SPD). Uma matriz com essas propriedades é invertível, e tanto ela quanto sua inversa definem produtos internos e consequentemente normas [ADICIONAR REFERENCIAS DISSO]. Dessa forma, podemos escrever que:
+\begin{equation}
+    \vet u^T \bm W_T^{-1} \vet u = \prodint{\vet u}{\vet u}_{\bm W_T^{-1}}.
+\end{equation}
+Pela equivalência de normas, temos que:
+\begin{equation}\label{eq:equivalencia_normas_W}
+    \lambda_{min} (\bm W_T^{-1}) \leq \dfrac{\vet u^T \bm W_T^{-1} \vet u}{\vet u^T \vet u} \leq \lambda_{max} (\bm W_T^{-1}),
+\end{equation}
+onde os extremos são o menor e o maior autovalor de de $\bm W_T^{-1}$, respectivamente. Por ser SPD, seus autovalores são todos reais positivos e, mais ainda, $\lambda_i (\bm W_T^{-1}) = 1/\lambda_i(\bm W_T)$. Vale observar também que o momento de inércia pode ser escrito em função dos autovalores de $\bm W_T$:
+\begin{equation}\label{eq:momento_inercia_autovalores_W}
+    I = \dfrac{1}{2} tr \bm W_T = \dfrac{1}{2} \sum_{i=1}^3 \lambda_i (\bm W_T) \geq \lambda_{max}(\bm W_T).
+\end{equation}
+Aplicando (\ref{eq:momento_inercia_autovalores_W}) em (\ref{eq:equivalencia_normas_W}) conseguimos o seguinte:
+\begin{equation}\label{eq:desigualdade_inercia}
+    I^{-1} \leq \lambda_{min} (\bm W_T^{-1}) \leq \dfrac{\vet u^T \bm W_T^{-1} \vet u}{\vet u^T \vet u}
+    \Rightarrow
+    \vet u^T \bm W_T^{-1} \vet u \geq \vet u^T \vet u I^{-1}.
+\end{equation}
+
+Essa desigualdade é particularmente interessante quando estamos trabalhando com vetores ligados ao PNCG. Pensando no momento angular $\vet J$, por exemplo, $\vet J^T \bm W_T^{-1} \vet J$ está relacionado com o movimento angular do sistema, e podemos relacioná-lo com sua própria norma:
+\begin{equation}\label{eq:desigualdade_inercia_angular}
+    \vet J^T \bm W_T^{-1} \vet J \geq || \vet J ||^2 I^{-1}.
+\end{equation}

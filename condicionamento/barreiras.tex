@@ -1,0 +1,36 @@
+\subsection{Barreiras}
+De antemão, vale ressaltar que não é possível obter qualquer tripla $(\tilde E, \tilde{\vet P}, \tilde{\vet J})$ desejada [SERÁ MESMO?], pois há barreiras teóricas - com interpretações físicas bastante convincentes - que impedem isso. A primeira delas é a Desigualdade de Sundman.
+
+\subsubsection{Desigualdade de Sundman}
+
+\begin{theorem}[Desigualdade de Sundman]
+    Sejam $\vet J$ o momento angular, $I$ o momento de inércia e $E$ a energia total de um PNCG. Então $\norma{\vet J}^2 \leq I(\ddot I - 2E)$.
+\end{theorem}
+\begin{proof}
+    Tem no TCC. É só Cauchy-Schwarz.
+\end{proof}
+
+Seu impacto se dá da seguinte forma. Considere a transformação $\tilde{\vet q} = \alpha^{-1} \vet q$ visando obter $\tilde{\vet J}$ e $\tilde E$. No caso do PNCG clássico, a Identidade de Lagrange-Jacobi nos garante que $\ddot I = 4E - 2V$, então a desigualdade de Sundman assume o formato
+\begin{equation}
+    \tilde c^2 \leq 2 \tilde{I} (\tilde{E} - \tilde V),
+    \quad
+    \tilde c = \norma{\tilde{\vet J}}.
+\end{equation}
+Observe que $I$ é uma função homogênea de grau 2, e como $V$ é homogêneo de grau -1, temos:
+\begin{equation}
+    \tilde c^2 \leq 2 \alpha^{-2} I_0 (\tilde E - |\alpha| V_0) = 2 \alpha^{-2} I_0 \tilde E - 2 \dfrac{|\alpha|}{\alpha^2} I_0 V_0.
+\end{equation}
+Podemos multiplicar ambos os lados por $\alpha^2 > 0$:
+\begin{equation}\label{eq:inequacao_sundman}
+    \tilde c^2 \alpha^2 - 2 I_0 \tilde E + 2 |\alpha| I_0 V_0 \leq 0.
+\end{equation}
+
+Independente do sinal de $\alpha$, o que temos é uma inequação de segundo grau para $\alpha$ com coeficiente de segundo grau positivo, o que significa que só existe solução se a equação tiver alguma solução. O discriminante é:
+\begin{equation}\label{eq:delta_sundman}
+    \Delta_{Sundman} = 4 I_0^2 V_0^2 + 8 \tilde c^2 I_0 \tilde E,
+\end{equation}
+e uma solução existe se, e somente se,
+\begin{equation}
+    I_0 V_0^2 \geq -2 \tilde c^2 \tilde E.
+\end{equation}
+A restrição imposta por $\Delta_{Sundman}$ de fato não importa se $\tilde E \geq 0$. Mas caso contrário, identifica se a energia total é suficiente para atender a quantidade de rotação exigida através de $\tilde c^2$.

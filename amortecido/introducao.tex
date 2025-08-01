@@ -1,0 +1,27 @@
+O problema clássico de N-corpos tem uma questão numérica importante: apesar das colisões reais serem raras, corpos que passam muito próximos desestabilizam numericamente o sistema, uma vez que dividimos o potencial por um número que pode ser muito grande. Existem muitas formas de lidar com isso, e uma das mais simples é adicionar um pequeno $\varepsilon > 0$ no denominador:
+\begin{equation}
+    V_\varepsilon(\vet q) := - G \sum{a < b} \dfrac{m_a m_b}{\sqrt{r_{ab}^2 + \varepsilon^2}}.
+\end{equation}
+De fato, ainda que todos os corpos ocupem o mesmo espaço, o potencial fica limitado por uma constante proporcional a $-\varepsilon^{-2}$. Porém, perdemos uma importante propriedade: o potencial não é mais homogêneo. O que conseguimos no lugar é o seguinte:
+\begin{equation}
+    V_\varepsilon(\mu \vet q) = |\mu|^{-1} V_{\varepsilon/|\mu|} (\vet q),
+    \quad
+    V_\varepsilon(\mu \varepsilon \vet q) = \varepsilon^{-1} V_1(\mu \vet q).
+\end{equation}
+
+Isso, é claro, exige algumas mudanças na forma que lidamos com o problema. As forças, por exemplo, precisam ser calculadas também com $\varepsilon$:
+\begin{equation}
+    \vet F_a = \sum_{b \neq a}^N G m_a m_b \dfrac{\vet q_b - \vet q_a}{\left(r_{ab}^2 + \varepsilon^2 \right)^{3/2}}.
+\end{equation}
+Com isso, garantimos que o sistema continue conservativo, mas com uma hamiltoniana $H_\varepsilon = T + V_\varepsilon$.
+
+Outra mudança importante também está na Identidade de Lagrange-Jacobi. A forma $\ddot I = 4E - 2V$ está diretamente ligada com $V$ ser homogêneo de grau -1. De fato, se $V$ é homogêneo de grau $k$, a Identidade assume a forma $\ddot I = 4E - 2 (2+k)V$. Porém, se $V$ não for homogêneo como no caso amortecido, temos o seguinte:
+\begin{equation}
+    \ddot I = 2 T + \sum_{a=1}^N \prodint{\vet F_a}{\vet q_a}.
+\end{equation}
+
+Isso tem impacto nas restrições que utilizamos. A Desigualdade de Sundman, por exemplo, ainda é válida, e de fato podemos escrever que $\norma{\vet J} \leq 2 I(E - V_\varepsilon)$. Mas a expressão final para o $\Delta_{Sundman}$ não é mais válida.
+
+É evidente que tudo isso não permite usar uma parte do que desenvolvemos até então para condicionar valores iniciais, especialmente em tudo aquilo que usa do fato do potencial ser homogêneo de grau -1: o condicionamento da energia total e o método de Aarseth para obter equilíbrio inicial.
+
+Chama atenção a falta de bibiliografia a respeito disso [PELO MENOS ATÉ AGORA NÃO ACHEI NADA]. Embora o problema amortecido possa ser considerado uma aproximação para o problema de N-corpos, eles na prática não são o mesmo problema e não contabilizar o $\varepsilon$ para além de seu uso no denominador das forças pode levar a resultados diferentes do esperado.

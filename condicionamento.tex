@@ -1,0 +1,42 @@
+\documentclass{article}
+
+% -------------- PACOTE GERAL -------------- %
+\usepackage{helper/helper}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+% \usepackage[a5paper]{geometry}
+
+% -------------- CONFIGURACOES DA BIBLIOGRAFIA -------------- %
+\addbibresource{bibliografia.bib}
+
+% -------------- TITULO E INFORMACOES -------------- %
+\title{Condicionamento}
+\author{pão}
+\date{Julho de 2025}
+
+% -------------- DOCUMENTO -------------- %
+\begin{document}
+\maketitle
+
+% Sumario
+\tableofcontents
+\pagebreak
+
+% -------------- SECOES -------------- %
+\input{condicionamento/introducao}
+
+\section{Problema clássico de N-corpos}
+\input{condicionamento/propriedades}
+\input{condicionamento/separadamente}
+\input{condicionamento/metodo_iterativo}
+\input{condicionamento/metodo_direto}
+\input{condicionamento/virial}
+
+\section{Problema de N-corpos amortecido}
+\input{amortecido/introducao}
+\input{amortecido/energia_total}
+\input{amortecido/equilibrio}
+
+% -------------- BIBLIOGRAFIA -------------- %
+\printbibliography
+
+\end{document}

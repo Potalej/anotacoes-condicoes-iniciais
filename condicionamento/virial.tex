@@ -1,0 +1,56 @@
+\subsection{Valores iniciais em equilíbrio}
+Um caso particular de valores iniciais que são convenientes no que estamos estudando são valores iniciais em equilíbrio (virial), especificamente sob as condições padrão \cite{heggie_mathieu_unidades}:
+\begin{equation}\label{eq:virial_condicoes_padrao_homogeneo}
+    G = 1,
+    \quad
+    M = 1,
+    \quad
+    E = -\dfrac{1}{4},
+    \quad
+    R_V = 1.
+\end{equation}
+Aqui, $R_V$ é chamado \textbf{Raio de Virial} e é dado por:
+\begin{equation}
+    R_V \approx - \dfrac{G M^2}{2 V},
+\end{equation}
+o que nesse caso nos fornece $V = - 1/2$.
+
+\begin{definition}[Equilíbrio (virial)]
+    Dizemos que um sistema está em equilíbrio se $<\ddot I>_t = 0$.
+\end{definition}
+
+Lembrando da Identidade de Lagrange-Jacobi, sabemos que $\ddot I = 4 E - 2 V$, então um sistema só pode estar em equilíbrio se a média de $2 E - V$ for (aproximadamente) zero, então $E$ precisa ser negativo. Observe que as condições (\ref{eq:virial_condicoes_padrao_homogeneo}) garantem que o problema começa em equilíbrio.
+
+Um sistema em equilíbrio pode ter um momento linear total não nulo. Nesse caso, o centro de massas não irá permanecer na origem, então não podemos omiti-lo do cálculo de $I$:
+\begin{equation}
+    I = \sum_{a=1}^N m_a \norma{\vet q_a - \vet q_{cm}}^2.
+\end{equation}
+Também é permitido ter momento angular total não nulo. Com uma energia negativa, porém, é necessário garantir que seja satisfeita a condição generalizada, uma vez que o sistema pode não ter energia suficiente para garantir rotações ou a translação do centro de massas.
+
+Vamos considerar dois casos diferentes aqui: no primeiro, os momentos totais são nulos; no segundo, estamos interessados em condicioná-los para serem outra coisa, dentro do possível. Em ambos, a energia total é $-1/4$ e queremos que o potencial seja $-1/2$.
+
+\subsubsection{Momentos totais nulos (Aarseth)}
+Neste caso, vamos considerar um misto do apresentado até então com um algoritmo proposto por Aarseth \cite[p. 111]{aarseth_gravitational_2003}. Primeiro, supondo que já temos valores para condicionamento, precisamos normalizar as massas para obter $M=1$; para evitar extremos, procure ter $\bar m = 1/N$.
+
+Com isso em mãos, aplicamos o método direto para obter a tripla $(-1/4, \vet 0, \vet 0)$. Isso nos deixa relativamente perto do desejado, e com os momentos nulos qualquer redimensionamento sobre as energias não terá impacto no resultado final.
+
+Calculamos agora, pós-condicionamento inicial, $V_0$ e $T_0$, e definimos $Q_V = \sqrt{-\frac{V_0}{2T_0}}$. Tomamos então $\beta = \frac{V_0}{2 * (-1/4)} = - 2 V_0$, e aplicamos as transformações:
+\begin{equation}
+    \tilde{\vet q_a} = \beta \vet q_a,
+    \quad
+    \tilde{\vet p_a} = \dfrac{Q_V}{\sqrt \beta} \vet p_a.
+\end{equation}
+
+De fato, atingimos o que queríamos:
+\begin{align}
+    T(\tilde{\vet p}) &= \dfrac{Q_V^2}{\beta} T_0 
+    = \dfrac{-\frac{V_0}{2 T_0}}{- 2 V_0} T_0 = 1/4, \\
+    V(\tilde{\vet q}) &= \dfrac{1}{\beta} V_0
+    = -\dfrac{1}{2}, \\
+    E(\tilde{\vet q}, \tilde{\vet p}) &= -1/4.
+\end{align}
+
+Nessas unidades, o "mean square equilibrium velocity" é $\sigma^2 = 1/2$, então temos um crossing time constante
+\begin{equation}
+    t_{cr} = \dfrac{2 R_V}{\sigma} = \dfrac{2}{\sqrt 2}.
+\end{equation}
