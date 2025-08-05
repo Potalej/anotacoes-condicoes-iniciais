@@ -48,16 +48,16 @@ Pela equivalência de normas, temos que:
 \end{equation}
 onde os extremos são o menor e o maior autovalor de de $\bm W_T^{-1}$, respectivamente. Por ser SPD, seus autovalores são todos reais positivos e, mais ainda, $\lambda_i (\bm W_T^{-1}) = 1/\lambda_i(\bm W_T)$. Vale observar também que o momento de inércia pode ser escrito em função dos autovalores de $\bm W_T$:
 \begin{equation}\label{eq:momento_inercia_autovalores_W}
-    I = \dfrac{1}{2} tr \bm W_T = \dfrac{1}{2} \sum_{i=1}^3 \lambda_i (\bm W_T) \geq \lambda_{max}(\bm W_T).
+    I = \dfrac{1}{2} tr \bm W_T = \dfrac{1}{2} \sum_{i=1}^3 \lambda_i (\bm W_T) \geq \dfrac{1}{2} \lambda_{max}(\bm W_T).
 \end{equation}
 Aplicando (\ref{eq:momento_inercia_autovalores_W}) em (\ref{eq:equivalencia_normas_W}) conseguimos o seguinte:
 \begin{equation}\label{eq:desigualdade_inercia}
-    I^{-1} \leq \lambda_{min} (\bm W_T^{-1}) \leq \dfrac{\vet u^T \bm W_T^{-1} \vet u}{\vet u^T \vet u}
+    \dfrac{1}{2I} \leq \lambda_{min} (\bm W_T^{-1}) \leq \dfrac{\vet u^T \bm W_T^{-1} \vet u}{\vet u^T \vet u}
     \Rightarrow
-    \vet u^T \bm W_T^{-1} \vet u \geq \vet u^T \vet u I^{-1}.
+    2 \vet u^T \bm W_T^{-1} \vet u \geq \vet u^T \vet u I^{-1}.
 \end{equation}
 
 Essa desigualdade é particularmente interessante quando estamos trabalhando com vetores ligados ao PNCG. Pensando no momento angular $\vet J$, por exemplo, $\vet J^T \bm W_T^{-1} \vet J$ está relacionado com o movimento angular do sistema, e podemos relacioná-lo com sua própria norma:
 \begin{equation}\label{eq:desigualdade_inercia_angular}
-    \vet J^T \bm W_T^{-1} \vet J \geq || \vet J ||^2 I^{-1}.
+    2 \vet J^T \bm W_T^{-1} \vet J \geq || \vet J ||^2 I^{-1}.
 \end{equation}
